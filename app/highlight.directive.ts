@@ -6,6 +6,7 @@ import {Directive, ElementRef, Renderer, Input, OnInit, HostListener} from '@ang
 export class HighlightDirective implements OnInit{
     private defaultBorderColor:string = 'red';
     @Input() borderColor:string='';
+    @Input('myHighlight') hoverColor:string = 'blue';
     @HostListener('mouseenter',['$event']) onMouseEnter;
     @HostListener('mouseleave',['$event']) onMouseLeave;
 
@@ -16,12 +17,10 @@ export class HighlightDirective implements OnInit{
     }
 
     onMouseEnter(ev){
-        console.log(ev);
-        this.renderer.setElementStyle(this.el.nativeElement, 'border', '10px solid');
+        this.renderer.setElementStyle(this.el.nativeElement, 'border', '10px solid ' + this.hoverColor);
     }
 
     onMouseLeave(ev){
-        console.log(ev);
-        this.renderer.setElementStyle(this.el.nativeElement, 'border-width', '4px');
+        this.renderer.setElementStyle(this.el.nativeElement, 'border', '4px solid ' + (this.borderColor || this.defaultBorderColor));
     }
 }
