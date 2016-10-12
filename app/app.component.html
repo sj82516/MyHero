@@ -1,0 +1,21 @@
+<h1>{{title}}</h1>
+<h3>Structure Directive</h3>
+<ul>
+    <li *ngFor="let h of heros;let i of index">
+        <span [ngClass]="{'isRich':h.money>50}" [ngStyle]="{'color':h.age>20?'red':'blue'}">Hero Name: {{h.name}} , Hero Age: {{h.age}}</span>
+    </li>
+</ul>
+<img src="{{imgSrc}}"/>
+<img [src]="imgSrc" *ngIf="isImgShow"/>
+<button (click)="isImgShow = !isImgShow">Toggle ImgSrc</button>
+<div [ngSwitch]="heros[0].age">
+    <div *ngSwitchCase="10">{{heros[0].age}} = 10</div>
+    <div *ngSwitchCase="20">{{heros[0].age}} = 20</div>
+    <div *ngSwitchCase="30">{{heros[0].age}} = 30</div>
+    <div *ngSwitchCase="default">unknown</div>
+</div>
+<br>
+<h3>Attribute Directive</h3>
+<img src="{{imgSrc}}" myHighlight [borderColor]="'yellow'"/>
+<img src="{{imgSrc}}" myHighlight/>
+<img src="{{imgSrc}}" myHighlight/>

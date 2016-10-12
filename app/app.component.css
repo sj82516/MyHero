@@ -1,0 +1,15 @@
+.area{
+    width: 200px;
+    height: 100px;
+    display: inline-block;
+}
+h1{
+    color:red;
+}
+img,.square{
+    width: 200px;
+    height: 150px;
+}
+.isRich{
+    border:4px solid yellow;
+}
