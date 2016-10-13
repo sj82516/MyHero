@@ -6,7 +6,7 @@ import { HighlightDirective }   from './highlight.directive';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule ],
-  declarations: [ AppComponent,HighlightDirective ],
+  declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

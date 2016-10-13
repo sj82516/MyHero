@@ -1,21 +1,26 @@
-<h1>{{title}}</h1>
-<h3>Structure Directive</h3>
-<ul>
-    <li *ngFor="let h of heros;let i of index">
-        <span [ngClass]="{'isRich':h.money>50}" [ngStyle]="{'color':h.age>20?'red':'blue'}">Hero Name: {{h.name}} , Hero Age: {{h.age}}</span>
-    </li>
-</ul>
-<img src="{{imgSrc}}"/>
-<img [src]="imgSrc" *ngIf="isImgShow"/>
-<button (click)="isImgShow = !isImgShow">Toggle ImgSrc</button>
-<div [ngSwitch]="heros[0].age">
-    <div *ngSwitchCase="10">{{heros[0].age}} = 10</div>
-    <div *ngSwitchCase="20">{{heros[0].age}} = 20</div>
-    <div *ngSwitchCase="30">{{heros[0].age}} = 30</div>
-    <div *ngSwitchCase="default">unknown</div>
-</div>
-<br>
-<h3>Attribute Directive</h3>
-<img src="{{imgSrc}}" myHighlight [borderColor]="'yellow'"/>
-<img src="{{imgSrc}}" [myHighlight]="'green'"/>
-<img src="{{imgSrc}}" myHighlight/>
+<section>
+    <div class="title">
+        <h1>Hero</h1>
+    </div>
+    <div class="body">
+        <div class="hero-detail">
+            <h2>Hero list</h2>
+            <div class="hero-detail-body">
+                <img [style.background-image]="'url('+ (selectedHero.imgUrl || 'http://demo.sc.chinaz.com/Files/pic/icons/5285/260.png')+')'">
+                <div class="hero-info">
+                    <p>Hero Name: {{selectedHero.name || 'unkown'}}</p>
+                    <p>Hero Age: {{selectedHero.age || 'unkown'}}</p>
+                    <button (click)="onClick(selectedHero.name)">Say Hello</button>
+                </div>
+            </div>
+        </div>
+        <div class="hero-list">
+            <h2>Hero list</h2>
+            <ul>
+                <li *ngFor="let h of heros">
+                    <span (click)="selectedHero = h"> {{h.name}} {{h.age}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
