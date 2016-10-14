@@ -1,4 +1,4 @@
-.hero-detail{
+form{
     box-shadow: 0px 0px 3px gray;
     border: 4px solid #39EE2A;
 }
@@ -9,14 +9,17 @@
     box-sizing: border-box;
 }
 
-.hero-detail-body img{
+.hero-img{
+    width: auto;
+    flex: 1;
+    margin-right: 10px;
+}
+
+img{
     height: 300px;
     width: 300px;
     background-repeat: no-repeat;
     background-position: center;
-    width: auto;
-    flex: 1;
-    margin-right: 10px;
 }
 
 .hero-info{
@@ -26,11 +29,6 @@
 .hero-info p {
     font-size: 22px;
     margin-bottom: 10px;
-}
-
-h1{
-    font-size: 40px;
-    color: white;
 }
 
 h2{
@@ -43,13 +41,26 @@ h2{
     justify-content: center;
 }
 
-.footer{
+.input-col{
+
+}
+
+label{
+    display: block;
+    margin: 5px 0px;
+}
+
+input{
+    display: block;
     width: 100%;
-    padding-left: 10%;
+    height: 40px;
+    padding-left: 5px;
+    line-height: 40px;
+    box-sizing: border-box;
 }
 
 button {
-    width: 100%;
+    width: 40%;
     background: linear-gradient(to left, #29EE8C, #1BEED0);
     height: 40px;
 }

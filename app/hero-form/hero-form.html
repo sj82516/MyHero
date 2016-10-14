@@ -1,0 +1,30 @@
+<form [formGroup]="myForm" (submit)="onSave()">
+    <h2>Hero Form</h2>
+    <div class="hero-detail-body">
+        <div class="hero-img">
+            <img [style.background-image]="'url('+ (myForm.controls['imgUrl'].value ||'http://demo.sc.chinaz.com/Files/pic/icons/5285/260.png') +')'">
+            <div class="input-col">
+                <label for="imgUrl">Image Url</label>
+                <input id="imgUrl" formControlName="imgUrl" type="text" placeholder="input your image url">
+            </div>
+        </div>
+        <div class="hero-info">
+            <div class="input-col">
+                <label>Name</label>
+                <input id="name" formControlName="name" type="text" placeholder="input your name">
+            </div>
+            <div class="input-col">
+                <label for="age">Age</label>
+                <input id="age" formControlName="age" type="number" placeholder="input your age">
+            </div>
+            <div class="input-col">
+                <label>Money</label>
+                <input type="radio" formControlName="money">
+            </div>
+            <div class="btn-col">
+                <button type="submit">Submit</button>
+                <button >Reset Form</button>
+            </div>
+        </div>
+    </div>
+</form>
