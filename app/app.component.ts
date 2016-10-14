@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls:['./app/app.component.css']
 })
 export class AppComponent {
-    private seletedHero:Hero;
+    private selectedHero:Hero;
     private heros:Array<Hero> = new Array();
     constructor(){
         this.heros.push(new Hero('hero1',10,100,"http://friendoprod.blob.core.windows.net/missionpics/images/3172/member/8ef320d2-b8b7-4e07-9c8a-6c186ce9f70d.gif"));
@@ -16,8 +16,9 @@ export class AppComponent {
         this.selectedHero = this.heros[0];
     }
 
-    onClick(ev){
-        alert("Hello from "+ ev);
+    handlerHelloFromDetail(ev){
+        console.log("recieved from son comp");
+        alert("hello from "+ev);
     }
 }
 

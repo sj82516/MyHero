@@ -1,0 +1,14 @@
+<div class="hero-detail">
+    <h2>Hero list</h2>
+    <div class="hero-detail-body">
+        <img [style.background-image]="'url('+ (selectedHero.imgUrl || 'http://demo.sc.chinaz.com/Files/pic/icons/5285/260.png')+')'">
+        <div class="hero-info">
+            <p>Hero Name: {{selectedHero.name || 'unkown'}}</p>
+            <p>Hero Age: {{selectedHero.age || 'unkown'}}</p>
+            <button (click)="onClick(selectedHero.name)">Say Hello</button>
+        </div>
+    </div>
+    <div class="footer">
+        <ng-content select="footer"></ng-content>
+    </div>
+</div>
