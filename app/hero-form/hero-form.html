@@ -1,29 +1,42 @@
-<form [formGroup]="myForm" (submit)="onSave()">
+<form [formGroup]="myForm" (submit)="onSave($event)">
     <h2>Hero Form</h2>
     <div class="hero-detail-body">
         <div class="hero-img">
             <img [style.background-image]="'url('+ (myForm.controls['imgUrl'].value ||'http://demo.sc.chinaz.com/Files/pic/icons/5285/260.png') +')'">
             <div class="input-col">
                 <label for="imgUrl">Image Url</label>
-                <input id="imgUrl" formControlName="imgUrl" type="text" placeholder="input your image url">
+                <input id="imgUrl" formControlName="imgUrl" type="text" placeholder="input your image url" (keyup)="handleInputError(myForm.controls['imgUrl'],'imgUrl')">
+                <div class="error-msg" *ngIf="!myForm.controls['imgUrl'].valid">{{errorMsgs["imgUrl"]}}</div>
             </div>
         </div>
         <div class="hero-info">
             <div class="input-col">
                 <label>Name</label>
-                <input id="name" formControlName="name" type="text" placeholder="input your name">
+                <input id="name" formControlName="name" type="text" placeholder="input your name" (keyup)="handleInputError(myForm.controls['name'],'name')">
+                <div class="error-msg" *ngIf="!myForm.controls['name'].valid">{{errorMsgs["name"]}}</div>
             </div>
             <div class="input-col">
                 <label for="age">Age</label>
-                <input id="age" formControlName="age" type="number" placeholder="input your age">
+                <input id="age" formControlName="age" type="number" placeholder="input your age" (keyup)="handleInputError(myForm.controls['age'],'age')">
+                <div class="error-msg" *ngIf="!myForm.controls['age'].valid">{{errorMsgs["age"]}}</div>
             </div>
             <div class="input-col">
                 <label>Money</label>
-                <input type="radio" formControlName="money">
+                <input type="radio" formControlName="money" value="20" (keyup)="handleInputError(myForm.controls['money'],'money')">20
+                <input type="radio" formControlName="money" value="40" (keyup)="handleInputError(myForm.controls['money'],'money')">40
+                <input type="radio" formControlName="money" value="60" (keyup)="handleInputError(myForm.controls['money'],'money')">60
+                <div class="error-msg" *ngIf="!myForm.controls['money'].valid">{{errorMsgs["money"]}}</div>
+            </div>
+            <div class="input-col" formGroupName="address">
+                <label>Address</label>
+                <input type="text" formControlName="country" placeholder="input country" (keyup)="handleInputError(myForm.controls['address'].controls['country'],'country')">
+                <div class="error-msg" *ngIf="!myForm.controls['address'].controls['country'].valid">{{errorMsgs["country"]}}</div>
+                <input type="text" formControlName="city" placeholder="input city" (keyup)="handleInputError(myForm.controls['address'].controls['city'],'city')">
+                <div class="error-msg" *ngIf="!myForm.controls['address'].controls['city'].valid">{{errorMsgs["city"]}}</div>
             </div>
             <div class="btn-col">
-                <button type="submit">Submit</button>
-                <button >Reset Form</button>
+                <button type="submit" [disabled]="!myForm.valid">Submit</button>
+                <button (click)="myForm.reset()">Reset Form</button>
             </div>
         </div>
     </div>

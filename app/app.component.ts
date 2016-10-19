@@ -20,6 +20,10 @@ export class AppComponent {
         console.log("recieved from son comp");
         alert("hello from "+ev);
     }
+
+    handleNerHero(ev){
+        this.heros.push(ev);
+    }
 }
 
 class Hero{

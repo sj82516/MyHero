@@ -43,9 +43,19 @@ h2{
     justify-content: center;
 }
 
+br{
+    content:"";
+    display: block;
+    border: 1px solid black;
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 10px;
+}
+
 .footer{
     width: 100%;
     padding-left: 10%;
+    margin-bottom: 10px;
 }
 
 button {
