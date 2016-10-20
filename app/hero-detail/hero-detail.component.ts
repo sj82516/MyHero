@@ -1,4 +1,5 @@
 import { Component,Output,Input,EventEmitter } from '@angular/core';
+import {Hero} from "../hero.model";
 
 @Component({
   selector: 'my-hero-detail',
@@ -14,8 +15,4 @@ export class HeroDetailComponent {
     onClick(ev){
         this.onHelloFromDetail.emit(ev);
     }
-}
-
-class Hero{
-    constructor(public name:string, public age:number, public money:number, public imgUrl:string){};
 }

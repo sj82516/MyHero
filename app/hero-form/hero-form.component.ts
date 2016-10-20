@@ -1,5 +1,7 @@
-import {Component, OnInit, Output,OnDestroy, EventEmitter} from '@angular/core';
+import {Component, OnInit,OnDestroy, EventEmitter} from '@angular/core';
 import {FormBuilder, Validators, FormGroup, FormControl, AbstractControl} from '@angular/forms';
+import {Hero} from "../hero.model";
+import { HeroService }   from '../hero.service';
 
 @Component({
   selector: 'my-hero-form',
@@ -8,11 +10,10 @@ import {FormBuilder, Validators, FormGroup, FormControl, AbstractControl} from '
 })
 export class HeroFormComponent implements OnInit{
     private myForm:FormGroup;
-    @Output() onNewHero:EventEmitter<Hero> = new EventEmitter<Hero>();
     private errors:{[key:string]:Array<any>} = {};
     private errorMsgs:{[key:string]:string} = {};
 
-    constructor(private formBuilder:FormBuilder){
+    constructor(private formBuilder:FormBuilder, private heroService:HeroService){
     }
 
     ngOnInit(){
@@ -30,8 +31,7 @@ export class HeroFormComponent implements OnInit{
     }
 
     onSave(ev){
-        console.log(this.myForm.value);
-        this.onNewHero.emit(new Hero(this.myForm.value.name,
+        this.heroService.createHero(new Hero(this.myForm.value.name,
             this.myForm.value.age,
             +this.myForm.value.money,
             this.myForm.value.imgUrl
@@ -99,8 +99,4 @@ export class HeroFormComponent implements OnInit{
         })
         return promise;
     }
-}
-
-class Hero{
-    constructor(public name:string, public age:number, public money:number, public imgUrl:string){};
 }
