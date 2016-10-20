@@ -1,20 +1,3 @@
 <section>
-    <div class="title">
-        <h1>Hero</h1>
-    </div>
-    <div class="body">
-        <my-hero-detail [selectedHero]="selectedHero" (onHelloFromDetail)="handlerHelloFromDetail($event)">
-            <footer>Today is good day</footer>
-            <div class="bad">Today is bad day</div>
-        </my-hero-detail>
-        <div class="hero-list">
-            <h2>Hero list</h2>
-            <ul>
-                <li *ngFor="let h of heros">
-                    <span (click)="selectedHero = h"> {{h.name}} {{h.age}}</span>
-                </li>
-            </ul>
-        </div>
-        <my-hero-form></my-hero-form>
-    </div>
+    <my-hero></my-hero>
 </section>

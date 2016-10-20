@@ -1,12 +1,12 @@
 import {Component, OnInit,OnDestroy, EventEmitter} from '@angular/core';
 import {FormBuilder, Validators, FormGroup, FormControl, AbstractControl} from '@angular/forms';
-import {Hero} from "../hero.model";
-import { HeroService }   from '../hero.service';
+import {Hero} from "/dist/shared/hero.model";
+import { HeroService }   from '/dist/shared/hero.service';
 
 @Component({
   selector: 'my-hero-form',
-  templateUrl: './app/hero-form/hero-form.html',
-  styleUrls:['./app/hero-form/hero-form.css']
+  templateUrl: './app/hero/hero-form/hero-form.html',
+  styleUrls:['./app/hero/hero-form/hero-form.css']
 })
 export class HeroFormComponent implements OnInit{
     private myForm:FormGroup;
