@@ -27,6 +27,7 @@ export class HeroFormComponent implements OnInit{
             })
         })
         this.registerInputCheck();
+        console.log(this.myForm);
     }
 
     onSave(ev){
@@ -76,14 +77,14 @@ export class HeroFormComponent implements OnInit{
         }
     }
 
-    exampleValidator(control){
+    exampleValidator(control:AbstractControl){
         if(control.value == 'example'){
             return {'example':true}
         }
         return null
     }
 
-    asyncValidator(control){
+    asyncValidator(control:AbstractControl){
         let that = this;
         const promise =  new Promise<any>((resolve, reject)=>{
             let v = control.value;

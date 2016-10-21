@@ -6,7 +6,7 @@ import { HeroDetailComponent }   from './hero-detail/hero-detail.component';
 import { HeroFormComponent }   from './hero-form/hero-form.component';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, ReactiveFormsModule ],
+  imports:      [ BrowserModule, ReactiveFormsModule ],
   declarations: [ AppComponent, HeroDetailComponent,HeroFormComponent ],
   bootstrap:    [ AppComponent ]
 })
