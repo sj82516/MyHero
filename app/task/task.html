@@ -1,0 +1,14 @@
+<div class="title">
+    <h1>Task</h1>
+</div>
+<div class="body">
+    <div class="task-list">
+        <h2>Task list</h2>
+        <ul>
+            <li *ngFor="let t of tasks">
+                <span (click)="navToHeroDetail(t.id)"> {{t.title}} {{t.description}}</span>
+            </li>
+        </ul>
+    </div>
+    <my-task-form></my-task-form>
+</div>

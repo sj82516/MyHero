@@ -2,15 +2,11 @@
     <h1>Hero</h1>
 </div>
 <div class="body">
-    <my-hero-detail [selectedHero]="selectedHero" (onHelloFromDetail)="handlerHelloFromDetail($event)">
-        <footer>Today is good day</footer>
-        <div class="bad">Today is bad day</div>
-    </my-hero-detail>
     <div class="hero-list">
         <h2>Hero list</h2>
         <ul>
             <li *ngFor="let h of heros">
-                <span (click)="selectedHero = h"> {{h.name}} {{h.age}}</span>
+                <span (click)="navToHeroDetail(h.id)"> {{h.name}} {{h.age}}</span>
             </li>
         </ul>
     </div>

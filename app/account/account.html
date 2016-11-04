@@ -1,0 +1,21 @@
+<div class="title">
+    <h1>Account</h1>
+</div>
+<form [formGroup]="myForm" (submit)="onSave($event)">
+    <div class="task-info">
+        <div class="input-col">
+            <label>Account</label>
+            <input id="account" formControlName="account" type="account" placeholder="input account" (keyup)="handleInputError(myForm.controls['account'],'account')">
+            <div class="error-msg" *ngIf="!myForm.controls['account'].valid">{{errorMsgs["account"]}}</div>
+        </div>
+        <div class="input-col">
+            <label>Password</label>
+            <input id="password" formControlName="password" type="password" placeholder="input password" (keyup)="handleInputError(myForm.controls['password'],'password')">
+            <div class="error-msg" *ngIf="!myForm.controls['password'].valid">{{errorMsgs["password"]}}</div>
+        </div>
+    </div>
+    <div class="btn-col">
+        <button type="submit" [disabled]="!myForm.valid">Submit</button>
+        <button (click)="myForm.reset()">Reset Form</button>
+    </div>
+</form>

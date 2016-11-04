@@ -1,0 +1,24 @@
+<div class="task-detail">
+    <h2>Task Detail</h2>
+    <div *ngIf="selectedTask">
+        <div class="task-detail-body">
+            <div class="task-info">
+                <p>Task Title: {{selectedTask.title || 'unkown'}}</p>
+                <p>Task Description: {{selectedTask.description || 'unkown'}}</p>
+                <p>Task Payment: {{selectedTask.payment || 'unkown'}}</p>
+            </div>
+        </div>
+        <br>
+        <div>
+            <span class="hero" *ngFor="let h of values(selectedTask.heroList)">
+                <div> {{h.name}}</div>
+                <div> {{h.age}}</div>
+            </span>
+        </div>
+        <button (click)="onClick()">Back</button>
+    </div>
+    <div *ngIf="!selectedTask">
+        <h4>No Task selected</h4>
+        <button (click)="onClick()">Back</button>
+    </div>
+</div>

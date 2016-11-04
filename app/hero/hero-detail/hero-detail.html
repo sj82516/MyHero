@@ -1,15 +1,31 @@
 <div class="hero-detail">
     <h2>Hero list</h2>
-    <div class="hero-detail-body">
-        <img [style.background-image]="'url('+ (selectedHero.imgUrl || 'http://demo.sc.chinaz.com/Files/pic/icons/5285/260.png')+')'">
-        <div class="hero-info">
-            <p>Hero Name: {{selectedHero.name || 'unkown'}}</p>
-            <p>Hero Age: {{selectedHero.age || 'unkown'}}</p>
-            <button (click)="onClick(selectedHero.name)">Say Hello</button>
+    <div *ngIf="selectedHero">
+        <div class="hero-detail-body">
+            <img [style.background-image]="'url('+ (selectedHero.imgUrl || 'http://demo.sc.chinaz.com/Files/pic/icons/5285/260.png')+')'">
+            <div class="hero-info">
+                <p>Hero Name: {{selectedHero.name || 'unkown'}}</p>
+                <p>Hero Age: {{selectedHero.age || 'unkown'}}</p>
+                <p>Hero Id: {{selectedHero.id==='undefiend'?'unkown':selectedHero.id}}</p>
+                <p>Hero Money: {{selectedHero.money || 'unkown'}}</p>
+                <p>Hero Address: {{selectedHero.address.country + ' , ' + selectedHero.address.city || 'unkown'}}</p>
+                <button (click)="onClick()">Back</button>
+            </div>
+        </div>
+        <br>
+        <div class="footer">
+            <ng-content select="footer"></ng-content>
+        </div>
+        <div>
+            <span class="task" *ngFor="let t of values(selectedHero.taskList)">
+                <div> {{t.title}}</div>
+                <div> {{t.description}}</div>
+                <div> {{t.payment}}</div>
+            </span>
         </div>
     </div>
-    <br>
-    <div class="footer">
-        <ng-content select="footer"></ng-content>
+    <div *ngIf="!selectedHero">
+        <h4>No User Selected</h4>
+        <button (click)="onClick()">Back</button>
     </div>
 </div>

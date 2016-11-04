@@ -1,7 +1,7 @@
 import {Component, OnInit,OnDestroy, EventEmitter} from '@angular/core';
 import {FormBuilder, Validators, FormGroup, FormControl, AbstractControl} from '@angular/forms';
-import {Hero} from "/dist/shared/hero.model";
-import { HeroService }   from '/dist/shared/hero.service';
+import { Hero } from "../../shared/hero.model";
+import { HeroService }  from '../../shared/hero.service';
 
 @Component({
   selector: 'my-hero-form',
@@ -34,7 +34,8 @@ export class HeroFormComponent implements OnInit{
         this.heroService.createHero(new Hero(this.myForm.value.name,
             this.myForm.value.age,
             +this.myForm.value.money,
-            this.myForm.value.imgUrl
+            this.myForm.value.imgUrl,
+            this.myForm.value.address
         ))
     }
 

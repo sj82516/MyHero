@@ -1,0 +1,28 @@
+<form [formGroup]="myForm" (submit)="onSave($event)">
+    <h2>Task Form</h2>
+    <div class="task-detail-body">
+        <div class="task-info">
+            <div class="input-col">
+                <label>Title</label>
+                <input id="title" formControlName="title" type="text" placeholder="input task title" (keyup)="handleInputError(myForm.controls['title'],'title')">
+                <div class="error-msg" *ngIf="!myForm.controls['title'].valid">{{errorMsgs["title"]}}</div>
+            </div>
+            <div class="input-col">
+                <label>Description</label>
+                <input id="description" formControlName="description" type="text" placeholder="input task description" (keyup)="handleInputError(myForm.controls['description'],'description')">
+                <div class="error-msg" *ngIf="!myForm.controls['description'].valid">{{errorMsgs["title"]}}</div>
+            </div>
+            <div class="input-col">
+                <label>Payment</label>
+                <input type="radio" formControlName="payment" value="300" (keyup)="handleInputError(myForm.controls['payment'],'payment')">300
+                <input type="radio" formControlName="payment" value="450" (keyup)="handleInputError(myForm.controls['payment'],'payment')">450
+                <input type="radio" formControlName="payment" value="600" (keyup)="handleInputError(myForm.controls['payment'],'payment')">600
+                <div class="error-msg" *ngIf="!myForm.controls['payment'].valid">{{errorMsgs["money"]}}</div>
+            </div>
+            <div class="btn-col">
+                <button type="submit" [disabled]="!myForm.valid">Submit</button>
+                <button (click)="myForm.reset()">Reset Form</button>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,15 +1,15 @@
-.hero-detail{
+.task-detail{
     box-shadow: 0px 0px 3px gray;
     border: 4px solid #39EE2A;
 }
 
-.hero-detail-body{
+.task-detail-body{
     display: flex;
     padding: 10px 10%;
     box-sizing: border-box;
 }
 
-.hero-detail-body img{
+.task-detail-body img{
     height: 300px;
     width: 300px;
     background-repeat: no-repeat;
@@ -19,11 +19,11 @@
     margin-right: 10px;
 }
 
-.hero-info{
+.task-info{
     margin-left: 10px;
     flex: 1;
 }
-.hero-info p {
+.task-info p {
     font-size: 22px;
     margin-bottom: 10px;
 }
@@ -60,12 +60,12 @@ br{
 
 button {
     width: 100%;
-    max-width: 80px;
+    min-width: 80px;
     background: linear-gradient(to left, #29EE8C, #1BEED0);
     height: 40px;
 }
 
-.task{
+.hero{
     display: inline-block;
     background-color: yellow;
     border-radius: 5px;
