@@ -1,15 +1,15 @@
 import {Routes, RouterModule} from "@angular/router";
 import {AccountComponent} from "./account/account.component";
-import {MainComponent} from "./main/main.component";
-import {MAIN_ROUTES} from "./main/main.routes";
+import {UserCanLoadGuard} from "./shared/user.service"
 
 /**
  * Created by zhengyuanjie on 2016/9/19.
  */
 const APP_ROUTES: Routes = [
+    { path:'', component: AccountComponent},
     { path:'account', component: AccountComponent},
-    { path:'main', component: MainComponent, children: MAIN_ROUTES},
-    { path:'', component: AccountComponent, pathMatch: 'full'},
+    { path:'main', loadChildren:'app/main/main.module#MainModule', canLoad:[UserCanLoadGuard]},
+    { path:'**', component: AccountComponent},
 ];
 
 export const routes = RouterModule.forRoot(APP_ROUTES);

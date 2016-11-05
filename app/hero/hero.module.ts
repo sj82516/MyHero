@@ -1,12 +1,12 @@
 import { NgModule }      from '@angular/core';
-import {CommonModule} from "@angular/common";
-import {ReactiveFormsModule, FormsModule} from "@angular/forms";
+import { SharedModule} from '../shared/shared.module';
+
 import { HeroDetailComponent }   from './hero-detail/hero-detail.component';
 import { HeroFormComponent }   from './hero-form/hero-form.component';
 import { HeroComponent } from './hero.component';
 
 @NgModule({
-  imports:      [ CommonModule, FormsModule, ReactiveFormsModule ],
+  imports:      [ SharedModule ],
   declarations: [ HeroDetailComponent,HeroFormComponent,HeroComponent ],
   exports:      [ HeroComponent ]
 })

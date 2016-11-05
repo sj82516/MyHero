@@ -1,5 +1,7 @@
 import {Component, OnInit,OnDestroy, EventEmitter} from '@angular/core';
+import {Router} from '@angular/router';
 import {FormBuilder, Validators, FormGroup, FormControl, AbstractControl} from '@angular/forms';
+import {UserService} from "../shared/user.service"
 
 @Component({
     selector:'my-account',
@@ -11,7 +13,7 @@ export class AccountComponent{
     private errors:{[key:string]:Array<any>} = {};
     private errorMsgs:{[key:string]:string} = {};
 
-    constructor(private formBuilder:FormBuilder){}
+    constructor(private formBuilder:FormBuilder, private userService:UserService, private router:Router){}
 
     ngOnInit(){
         this.myForm = this.formBuilder.group({
@@ -22,7 +24,10 @@ export class AccountComponent{
     }
 
     onSave(ev){
-
+        if(this.myForm.value['account']=='root'){
+            this.userService.loginUser = {account:this.myForm.value['account'], password:this.myForm.value['password']};
+            this.router.navigate(['/main']);
+        }
     }
 
     //配置錯誤訊息

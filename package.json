@@ -23,7 +23,7 @@
     "@angular/http": "~2.0.2",
     "@angular/platform-browser": "~2.0.2",
     "@angular/platform-browser-dynamic": "~2.0.2",
-    "@angular/router": "~3.0.2",
+    "@angular/router": "^3.0.0",
     "@angular/upgrade": "~2.0.2",
     "angular-in-memory-web-api": "~0.1.5",
     "bootstrap": "^3.3.7",
@@ -37,6 +37,6 @@
     "concurrently": "^3.0.0",
     "lite-server": "^2.2.2",
     "typescript": "^2.0.3",
-    "typings":"^1.4.0"
+    "typings": "^1.4.0"
   }
 }

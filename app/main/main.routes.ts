@@ -1,19 +1,22 @@
 import {Routes, RouterModule} from "@angular/router";
+
+import {MainComponent} from "./main.component";
 import {HeroComponent} from "../hero/hero.component";
 import {HeroDetailComponent} from "../hero/hero-detail/hero-detail.component";
-
 import {TaskComponent} from "../task/task.component";
 import {TaskDetailComponent} from "../task/task-detail/task-detail.component";
-
 import {ManageComponent} from "../manage/manage.component";
+import {UserCanDeactivateGuard} from "../shared/user.service";
 
-export const MAIN_ROUTES: Routes = [
-    { path:'hero', component: HeroComponent},
-    { path:'hero/:id', component: HeroDetailComponent},
-    { path:'task', component: TaskComponent},
-    { path:'task/:id', component: TaskDetailComponent},
-    { path:'manage', component: ManageComponent},
-    { path:'', component: TaskComponent}
+const MAIN_ROUTES: Routes = [
+    { path:'', component: MainComponent, children:[
+        { path:'', component: TaskComponent},
+        { path:'hero', component: HeroComponent, canDeactivate:[UserCanDeactivateGuard]},
+        { path:'hero/:id', component: HeroDetailComponent},
+        { path:'task', component: TaskComponent, canDeactivate:[UserCanDeactivateGuard]},
+        { path:'task/:id', component: TaskDetailComponent},
+        { path:'manage', component: ManageComponent}
+    ]}
 ];
 
-export const routes = RouterModule.forChild(MAIN_ROUTES);
+export const routing = RouterModule.forChild(MAIN_ROUTES);
