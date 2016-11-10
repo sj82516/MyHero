@@ -16,32 +16,23 @@ import {Hero} from "../../shared/hero.model";
 export class HeroDetailComponent implements OnInit,OnDestroy{
     private selectedHero:Hero;
     private subscribe:Subscription = new Subscription();
-    private subscribeQ:Subscription = new Subscription();
-    private subscribeF:Subscription = new Subscription();
     constructor(private activatedRoute:ActivatedRoute, private router:Router, private heroService:HeroService){}
     values(obj) : Array<string> {
         return Object.values(obj);
     }
 
     ngOnInit(){
-        this.subscribe = this.activatedRoute.params.subscribe((params)=>{
-            console.log(params['id']);
-            if(this.heroService.getHeroById(params['id'])!=null){
-                this.selectedHero = this.heroService.getHeroById(params['id']);
+        this.subscribe = this.activatedRoute.queryParams.subscribe((queryParams)=>{
+            console.log('in detail:'+queryParams['id']);
+            if(this.heroService.getHeroById(queryParams['id'])!=null){
+                this.selectedHero = this.heroService.getHeroById(queryParams['id']);
+                console.log(this.selectedHero);
             }
-        });
-        this.subscribeQ =  this.activatedRoute.queryParams.subscribe((params)=>{
-            console.log(params,params['name']);
-        });
-        this.subscribeF =  this.activatedRoute.fragment.subscribe((f)=>{
-            console.log(f);
         });
     }
 
     ngOnDestroy(){
         this.subscribe.unsubscribe();
-        this.subscribeQ.unsubscribe();
-        this.subscribeF.unsubscribe();
     }
 
     onClick(){

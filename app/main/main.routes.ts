@@ -12,7 +12,7 @@ const MAIN_ROUTES: Routes = [
     { path:'', component: MainComponent, children:[
         { path:'', component: TaskComponent},
         { path:'hero', component: HeroComponent, canDeactivate:[UserCanDeactivateGuard]},
-        { path:'hero/:id', component: HeroDetailComponent},
+        { path:'hero/detail', component: HeroDetailComponent},
         { path:'task', component: TaskComponent, canDeactivate:[UserCanDeactivateGuard]},
         { path:'task/:id', component: TaskDetailComponent},
         { path:'manage', component: ManageComponent}

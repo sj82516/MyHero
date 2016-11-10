@@ -7,6 +7,7 @@ export class Task{
         this.heroList[h.id] = h;
     }
     deleteHero(h:Hero){
+        console.log(h.id);
         delete this.heroList[h.id];
     }
 }

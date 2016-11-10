@@ -16,7 +16,7 @@
         <div class="footer">
             <ng-content select="footer"></ng-content>
         </div>
-        <div>
+        <div *ngIf="selectedHero.taskList">
             <span class="task" *ngFor="let t of values(selectedHero.taskList)">
                 <div> {{t.title}}</div>
                 <div> {{t.description}}</div>

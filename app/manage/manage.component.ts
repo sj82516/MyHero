@@ -14,7 +14,7 @@ export class ManageComponent{
     private heroList:Array<Hero> = new Array<Hero>();
     private taskList:Array<Task> = new Array<Task>();
     constructor(private heroService:HeroService, private taskService:TaskService){
-        this.heroList = this.heroService.getHeros();
+        this.heroList = this.heroService.heroList;
         this.taskList = this.taskService.getTasks();
         console.log(this.heroList);
     }
@@ -29,7 +29,7 @@ export class ManageComponent{
         //讓Todo item的tag與tagService連動
         let h = JSON.parse(ev.dataTransfer.getData('text/plain'));
         this.taskList[id].addNewHero(h);
-        this.heroList[h.id].addNewTask(this.taskList[id]);
+        this.heroService.getHeroById(h.id).addNewTask(this.taskList[id]);
         console.log(this.taskList[id].heroList);
     }
     dragStartHandler(ev, h){
@@ -40,6 +40,6 @@ export class ManageComponent{
 
     deleteHero(tId, hId){
         delete this.taskList[tId].heroList[hId];
-        delete this.heroList[hId].taskList[tId];
+        delete this.heroService.getHeroById(hId).taskList[tId];
     }
 }

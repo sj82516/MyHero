@@ -2,6 +2,11 @@ import {Component, OnInit,OnDestroy, EventEmitter} from '@angular/core';
 import {FormBuilder, Validators, FormGroup, FormControl, AbstractControl} from '@angular/forms';
 import { Hero } from "../../shared/hero.model";
 import { HeroService }  from '../../shared/hero.service';
+import "rxjs/Rx";
+import {Observable} from "rxjs/Observable";
+import 'rxjs/Rx';
+
+import {Subscription} from "rxjs/Subscription";
 
 
 
@@ -11,9 +16,10 @@ import { HeroService }  from '../../shared/hero.service';
   styleUrls:['./app/hero/hero-form/hero-form.css']
 })
 export class HeroFormComponent implements OnInit{
-    private myForm:FormGroup;
+    public myForm:FormGroup;
     private errors:{[key:string]:Array<any>} = {};
     private errorMsgs:{[key:string]:string} = {};
+    private subscription:Subscription = new Subscription();
 
     constructor(private formBuilder:FormBuilder, private heroService:HeroService){
     }
@@ -28,17 +34,20 @@ export class HeroFormComponent implements OnInit{
                 'country':['',[Validators.required, Validators.pattern('^[a-zA-Z]+$')],[this.asyncValidator.bind(this)]],
                 'city':['',[Validators.required,Validators.pattern('^[a-zA-Z]+$')]]
             })
-        })
+        });
         this.registerInputCheck();
     }
 
     onSave(ev){
-        this.heroService.createHero(new Hero(this.myForm.value.name,
+        this.subscription = this.heroService.createHero(new Hero(this.myForm.value.name,
             this.myForm.value.age,
             +this.myForm.value.money,
             this.myForm.value.imgUrl,
             this.myForm.value.address
-        ))
+        )).subscribe((data)=>{
+            this.heroService.heroList.push(new Hero(this.myForm.value.name, this.myForm.value.age, +this.myForm.value.money, this.myForm.value.imgUrl, this.myForm.value.address, data.name));
+            console.log(data);
+        })
     }
 
     //配置錯誤訊息
